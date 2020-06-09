@@ -23,8 +23,8 @@ const Item = () => {
 	const getPriorities = () => priorities;
 
 	return { setTitle, setDescription, setDueDate, setPriority, addNote,
-		   removeNote, getTitle, getDescription, getDueDate, getPriority,
-		   getNotes, getPriorities };
+			 removeNote, getTitle, getDescription, getDueDate, getPriority,
+			 getNotes, getPriorities };
 };
 
 export { Item };
