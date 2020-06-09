@@ -34,7 +34,14 @@ const Dom = (() => {
 			return true;
 	}
 
+	const clearProjectsDiv = () => {
+		while(projectsBody.firstChild){
+			projectsBody.removeChild(projectsBody.firstChild);
+		}
+	}
+
 	const renderProjects = (projectsArr) => {
+		clearProjectsDiv();
 		for(let i = 0; i < projectsArr.length; i++){
 			let spanProject = document.createElement("span");
 			spanProject.className = "project-container";
