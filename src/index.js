@@ -1,11 +1,12 @@
-import myName from './myName.js';
+import { Dom } from './dom.js';
 
-function component() {
-	const element = document.createElement('div');
+const Index = (() => {
 
-	// Using my function
-	element.innerHTML = myName('Andres');
-	return element;
-}
+	const render = () => {
+		Dom.init();
+	}
 
-document.body.appendChild(component());
+	return { render };
+})();
+
+Index.render();
