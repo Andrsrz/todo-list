@@ -51,7 +51,7 @@ html, body {
 
 #site-projects-body {
 	height: 840px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .project-container {
