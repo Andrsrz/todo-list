@@ -1,3 +1,5 @@
+import './style/style.css';
+
 const Dom = (() => {
 	const body = document.body;
 	const main = document.createElement("main");
