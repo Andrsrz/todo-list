@@ -26,9 +26,21 @@ html, body {
 	height: 100%;
 }
 
+#site-main > div {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-content: flex-start;
+}
+
 #site-main > #site-projects {
 	grid-area: projects;
 	background-color: #555;
+}
+
+.project-container {
+	width: 80%;
+	background-color: #534ADF;
 }
 
 #site-main > #site-items {

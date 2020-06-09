@@ -14,6 +14,20 @@ const Dom = (() => {
 		body.appendChild(footer);
 	}
 
+	const renderProjects = (projectsArr) => {
+		for(let i = 0; i < projectsArr.length; i++){
+			let spanProject = document.createElement("span");
+			spanProject.className = "project-container";
+			let h2Title = document.createElement("h2");
+			let h4Description = document.createElement("h4");
+			h2Title.innerHTML = projectsArr[i].getTitle();
+			h4Description.innerHTML = projectsArr[i].getDescription();
+			spanProject.appendChild(h2Title);
+			spanProject.appendChild(h4Description);
+			projects.appendChild(spanProject);
+		}
+	}
+
 	const setStyle = () => {
 		body.id = "site-body";
 		main.id = "site-main";
@@ -27,7 +41,7 @@ const Dom = (() => {
 		setStyle();
 	}
 
-	return { init };
+	return { init, renderProjects };
 })();
 
 export { Dom };
