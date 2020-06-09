@@ -34,12 +34,14 @@ const Dom = (() => {
 			return true;
 	}
 
+	/* Clear the div before render it again */
 	const clearProjectsDiv = () => {
 		while(projectsBody.firstChild){
 			projectsBody.removeChild(projectsBody.firstChild);
 		}
 	}
 
+	/* Render the projects from the projects array */
 	const renderProjects = (projectsArr) => {
 		clearProjectsDiv();
 		for(let i = 0; i < projectsArr.length; i++){
@@ -59,6 +61,7 @@ const Dom = (() => {
 		}
 	}
 
+	/* Set id to use inside the stylesheet */
 	const setStyle = () => {
 		body.id = "site-body";
 		main.id = "site-main";
