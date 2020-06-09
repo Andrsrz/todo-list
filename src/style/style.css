@@ -29,8 +29,8 @@ html, body {
 #site-main > div {
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: center;
 	align-content: flex-start;
+	justify-content: space-around;
 }
 
 #site-main > #site-projects {
@@ -39,8 +39,29 @@ html, body {
 }
 
 .project-container {
-	width: 80%;
+	width: 90%;
+	height: 100px;
+	margin: auto;
 	background-color: #534ADF;
+}
+
+@keyframes project-container-background {
+  from {background-color: #534ADF;}
+  to {background-color: #6F6ABA;}
+}
+
+.project-container:hover {
+	animation-name: project-container-background;
+	animation-duration: 1.5s;
+	cursor: pointer;
+}
+
+.project-contaier > #project-title {
+
+}
+
+.project-container > #project-description {
+
 }
 
 #site-main > #site-items {

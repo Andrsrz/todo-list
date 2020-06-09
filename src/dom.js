@@ -19,7 +19,9 @@ const Dom = (() => {
 			let spanProject = document.createElement("span");
 			spanProject.className = "project-container";
 			let h2Title = document.createElement("h2");
+			h2Title.className = "project-title"
 			let h4Description = document.createElement("h4");
+			h4Description.className = "project-description";
 			h2Title.innerHTML = projectsArr[i].getTitle();
 			h4Description.innerHTML = projectsArr[i].getDescription();
 			spanProject.appendChild(h2Title);
