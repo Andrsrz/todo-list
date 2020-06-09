@@ -41,6 +41,10 @@ const Dom = (() => {
 		}
 	}
 
+	const setProjectClickEvent = (span) => {
+		span.addEventListener("click", Index.printHelloOnClick, false);
+	}
+
 	/* Render the projects from the projects array */
 	const renderProjects = (projectsArr) => {
 		clearProjectsDiv();
@@ -57,6 +61,7 @@ const Dom = (() => {
 			spanProject.appendChild(h2Title);
 			spanProject.appendChild(space);
 			spanProject.appendChild(h4Description);
+			setProjectClickEvent(spanProject);
 			projectsBody.appendChild(spanProject);
 		}
 	}

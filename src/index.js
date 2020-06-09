@@ -10,11 +10,15 @@ const Index = (() => {
 		Dom.renderProjects(projects);
 	}
 
+	const printHelloOnClick = () => {
+		console.log("Hello");
+	}
+
 	const render = () => {
 		Dom.init();
 	}
 
-	return { render, generateNewProject };
+	return { render, generateNewProject, printHelloOnClick };
 })();
 export { Index };
 
