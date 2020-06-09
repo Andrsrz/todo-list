@@ -1,7 +1,7 @@
 const Project = () => {
 	/* Default values */
-	var title = "";
-	var description = "";
+	var title = "Title";
+	var description = "Description";
 	var todos = [];
 
 	/* Setters */

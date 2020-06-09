@@ -29,35 +29,62 @@ html, body {
 #site-main > div {
 	display: flex;
 	flex-flow: column nowrap;
-	align-content: flex-start;
-	justify-content: space-around;
 }
 
 #site-main > #site-projects {
 	grid-area: projects;
 	background-color: #555;
+	align-content: flex-start;
+	justify-content: flex-start;
+}
+
+#site-projects > #site-projects-header {
+	height: 50px;
+	background-color: #FFFFFF;
+	margin-bottom: 20px;
+}
+
+#site-projects-header > #add-project {
+	display: block;
+	margin: auto;
+	margin-top: 5px;
 }
 
 .project-container {
+	display: block;
 	width: 90%;
 	height: 100px;
 	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
 	background-color: #534ADF;
+	border-radius: 5px;
 }
 
 @keyframes project-container-background {
-  from {background-color: #534ADF;}
-  to {background-color: #6F6ABA;}
+	from {background-color: #534ADF;}
+	to {background-color: #6F6ABA;}
 }
 
 .project-container:hover {
 	animation-name: project-container-background;
 	animation-duration: 1.5s;
 	cursor: pointer;
+	background-color: #6F6ABA;
 }
 
 .project-contaier > #project-title {
 
+}
+
+.project-container > hr {
+	border: none;
+	border-top: 1px solid #333;
+	color: #333;
+	overflow: visible;
+	text-align: center;
+	height: 5px;
 }
 
 .project-container > #project-description {
