@@ -59,6 +59,7 @@ const Dom = (() => {
 		edit.addEventListener("click", function () {
 			console.log("edit project");
 		}, false);
+		edit.click();
 		del.addEventListener("click", function (e) {
 			Index.deleteProject(e.target.className);
 		}, false);
