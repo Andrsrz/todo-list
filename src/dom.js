@@ -64,14 +64,26 @@ const Dom = (() => {
 		for(let i = 0; i < projectsArr.length; i++){
 			let spanProject = document.createElement("span");
 			spanProject.className = "project-container " + projectsArr[i].getTitle() + i;
+			let spanTitleContainer = document.createElement("span");
+			spanTitleContainer.className = "project-title-container " + projectsArr[i].getTitle() + i;
 			let h2Title = document.createElement("h2");
 			h2Title.className = "project-title " + projectsArr[i].getTitle() + i;
+			let spanButtonsContainer = document.createElement("span");
+			spanButtonsContainer.className = "project-buttons-container " + projectsArr[i].getTitle() + i;
+			let btnEdit = document.createElement("button");
+			btnEdit.innerHTML = "E";
+			let btnDelete = document.createElement("button");
+			btnDelete.innerHTML = "D";
 			let space = document.createElement("hr");
 			let h4Description = document.createElement("h4");
 			h4Description.className = "project-description " + projectsArr[i].getTitle() + i;
 			h2Title.innerHTML = projectsArr[i].getTitle();
 			h4Description.innerHTML = projectsArr[i].getDescription();
-			spanProject.appendChild(h2Title);
+			spanButtonsContainer.appendChild(btnEdit);
+			spanButtonsContainer.appendChild(btnDelete);
+			spanTitleContainer.appendChild(h2Title);
+			spanTitleContainer.appendChild(spanButtonsContainer);
+			spanProject.appendChild(spanTitleContainer);
 			spanProject.appendChild(space);
 			spanProject.appendChild(h4Description);
 			setProjectClickEvent(spanProject);

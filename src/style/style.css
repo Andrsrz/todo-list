@@ -80,8 +80,24 @@ html, body {
 	background-color: #6F6ABA;
 }
 
-.project-contaier > .project-title {
+.project-container > .project-title-container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-content: center;
+}
 
+.project-title-contaier > .project-title {
+
+}
+
+.project-title-container > .project-buttons-container {
+
+}
+
+.project-buttons-container > button {
+	cursor: pointer;
+	margin: 0 3px 5px 3px;
 }
 
 .project-container > hr {
@@ -138,7 +154,6 @@ html, body {
 .todo-container:hover {
 	animation-name: todo-container-background;
 	animation-duration: 1.5s;
-	cursor: pointer;
 	background-color: #9E3850;
 }
 
