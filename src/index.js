@@ -52,8 +52,10 @@ const Index = (() => {
 
 	const deleteProject = (elementClass) => {
 		let id = getProjectIndex(elementClass);
+		console.log(id);
 		removeProject(id);
 		Dom.renderProjects(projects);
+		Dom.renderTodosFromProject(null);
 	}
 
 	const render = () => {

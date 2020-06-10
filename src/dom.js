@@ -107,46 +107,48 @@ const Dom = (() => {
 			return true;
 	}
 
-
 	const renderTodosFromProject = (index) => {
-		/* We use index to get the project from the projects array */
-		let project = Index.getProjects()[index];
-		let todosArr = project.getTodos();
 		clearDiv(items);
 		clearDiv(itemsHeader);
 		items.appendChild(itemsHeader);
 		items.appendChild(itemsBody);
 		clearDiv(itemsBody);
-		renderTodosHeader(index);
-		for(let i = 0; i < todosArr.length; i++){
-			let divTodo = document.createElement("div");
-			divTodo.className = "todo-container " + todosArr[i].getTitle() + i;
-			let h2Title = document.createElement("h2");
-			h2Title.className = "todo-title " + todosArr[i].getTitle() + i;
-			let space = document.createElement("hr");
-			let h4Description = document.createElement("h4");
-			h4Description.className = "todo-description " + todosArr[i].getTitle() + i;
-			let h4DueDate = document.createElement("h4");
-			h4DueDate.className = "todo-due-date " + todosArr[i].getTitle() + i;
-			h2Title.innerHTML = todosArr[i].getTitle();
-			h4Description.innerHTML = todosArr[i].getDescription();
-			h4DueDate.innerHTML = todosArr[i].getDueDate();
-			divTodo.appendChild(h2Title);
-			divTodo.appendChild(space);
-			divTodo.appendChild(h4Description);
-			divTodo.appendChild(h4DueDate);
-			if(todosArr[i].getNotes().lenght > 0){
-				let notes = document.createElement("span");
-				notes.className = "todo-notes " + todosArr[i].getTitle() + i;
-				for(let j = 0; i < todosArr[i].getNotes().length; j++){
-					let note = document.createElement("p");
-					note.className = "todo-note " + todosArr[i].getTitle() + i;
-					notes.appendChild(note);
+
+		if(index != null){
+			/* We use index to get the project from the projects array */
+			let project = Index.getProjects()[index];
+			let todosArr = project.getTodos();
+			renderTodosHeader(index);
+			for(let i = 0; i < todosArr.length; i++){
+				let divTodo = document.createElement("div");
+				divTodo.className = "todo-container " + todosArr[i].getTitle() + i;
+				let h2Title = document.createElement("h2");
+				h2Title.className = "todo-title " + todosArr[i].getTitle() + i;
+				let space = document.createElement("hr");
+				let h4Description = document.createElement("h4");
+				h4Description.className = "todo-description " + todosArr[i].getTitle() + i;
+				let h4DueDate = document.createElement("h4");
+				h4DueDate.className = "todo-due-date " + todosArr[i].getTitle() + i;
+				h2Title.innerHTML = todosArr[i].getTitle();
+				h4Description.innerHTML = todosArr[i].getDescription();
+				h4DueDate.innerHTML = todosArr[i].getDueDate();
+				divTodo.appendChild(h2Title);
+				divTodo.appendChild(space);
+				divTodo.appendChild(h4Description);
+				divTodo.appendChild(h4DueDate);
+				if(todosArr[i].getNotes().lenght > 0){
+					let notes = document.createElement("span");
+					notes.className = "todo-notes " + todosArr[i].getTitle() + i;
+					for(let j = 0; i < todosArr[i].getNotes().length; j++){
+						let note = document.createElement("p");
+						note.className = "todo-note " + todosArr[i].getTitle() + i;
+						notes.appendChild(note);
+					}
+					divTodo.appendChild(notes);
 				}
-				divTodo.appendChild(notes);
+				// setTodoClickEvent(divTodo);
+				itemsBody.appendChild(divTodo);
 			}
-			// setTodoClickEvent(divTodo);
-			itemsBody.appendChild(divTodo);
 		}
 	}
 
