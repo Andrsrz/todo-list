@@ -123,6 +123,12 @@ const Dom = (() => {
 			setProjectClickEvent(spanProject, btnEdit, btnDelete, btnOk);
 			/* And add to our body */
 			projectsBody.appendChild(spanProject);
+
+			/* Click edit if the project is new */
+			if(projectsArr[i].getTitle() == "Title" &&
+			   projectsArr[i].getDescription() == "Description"){
+				btnEdit.click();
+			}
 		}
 	}
 
