@@ -50,6 +50,17 @@ const Index = (() => {
 		Dom.renderTodosFromProject(id);
 	}
 
+	const editProject = (divProject) => {
+		Dom.renderEditProject(divProject);
+	}
+
+	const updateProject = (elementClass, title, description) => {
+		let id = getProjectIndex(elementClass);
+		projects[id].setTitle(title);
+		projects[id].setDescription(description);
+		Dom.renderProjects(projects);
+	}
+
 	const deleteProject = (elementClass) => {
 		let id = getProjectIndex(elementClass);
 		console.log(id);
@@ -63,7 +74,7 @@ const Index = (() => {
 	}
 
 	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo,
-			 deleteProject };
+			 editProject, updateProject, deleteProject };
 })();
 export { Index };
 

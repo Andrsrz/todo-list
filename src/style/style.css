@@ -68,6 +68,10 @@ html, body {
 	border-radius: 5px;
 }
 
+.edit {
+	height: 200px;
+}
+
 @keyframes project-container-background {
 	from {background-color: #534ADF;}
 	to {background-color: #6F6ABA;}
@@ -88,11 +92,51 @@ html, body {
 }
 
 .project-title-contaier > .project-title {
+	display: block;
+}
 
+.project-title-container > .project-title-input {
+	display: none;
+}
+
+.edit > .project-title-container > .project-title {
+	display: none;
+}
+
+.edit > .project-title-container > .project-title-input {
+	display: block;
 }
 
 .project-title-container > .project-buttons-container {
 
+}
+
+.edit > .project-title-container > .project-buttons-container {
+
+}
+
+.project-title-container > .project-buttons-container > .project-btn-edit {
+	display: inline-block;
+}
+
+.project-title-container > .project-buttons-container > .project-btn-delete {
+	display: inline-block;
+}
+
+.project-title-container > .project-buttons-container > .project-btn-ok {
+	display: none;
+}
+
+.edit > .project-title-container > .project-buttons-container > .project-btn-edit {
+	display: none;
+}
+
+.edit > .project-title-container > .project-buttons-container > .project-btn-delete {
+	display: none;
+}
+
+.edit > .project-title-container > .project-buttons-container > .project-btn-ok {
+	display: block;
 }
 
 .project-buttons-container > button {
@@ -110,7 +154,22 @@ html, body {
 }
 
 .project-container > .project-description {
+	display: block;
+}
 
+.edit > .project-description {
+	display: none;
+}
+
+.project-container > .project-description-input {
+	display: none;
+}
+
+.edit > .project-description-input {
+	display: block;
+	width: 100%;
+	height: 80%;
+	resize: none;
 }
 
 #site-main > #site-items {

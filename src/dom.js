@@ -52,16 +52,18 @@ const Dom = (() => {
 		}
 	}
 
-	const setProjectClickEvent = (span, edit, del) => {
+	const setProjectClickEvent = (span, edit, del, ok) => {
 		span.addEventListener("click", function (e) {
 			Index.getTodosFromProject(e.target.className);
 		}, false);
-		edit.addEventListener("click", function () {
-			console.log("edit project");
+		edit.addEventListener("click", function (e) {
+			Index.editProject(e.target.parentNode.parentNode.parentNode);
 		}, false);
-		edit.click();
 		del.addEventListener("click", function (e) {
 			Index.deleteProject(e.target.className);
+		}, false);
+		ok.addEventListener("click", function (e) {
+			getFormValues(e.target.className, e.target.parentNode.parentNode.parentNode);
 		}, false);
 	}
 
@@ -69,32 +71,74 @@ const Dom = (() => {
 	const renderProjects = (projectsArr) => {
 		clearDiv(projectsBody);
 		for(let i = 0; i < projectsArr.length; i++){
+			let projectTitle = projectsArr[i].getTitle() + i;
+			/* Create the elments. */
 			let spanProject = document.createElement("span");
-			spanProject.className = "project-container " + projectsArr[i].getTitle() + i;
 			let spanTitleContainer = document.createElement("span");
-			spanTitleContainer.className = "project-title-container " + projectsArr[i].getTitle() + i;
 			let h2Title = document.createElement("h2");
-			h2Title.className = "project-title " + projectsArr[i].getTitle() + i;
 			let spanButtonsContainer = document.createElement("span");
-			spanButtonsContainer.className = "project-buttons-container " + projectsArr[i].getTitle() + i;
 			let btnEdit = document.createElement("button");
-			btnEdit.innerHTML = "E";
 			let btnDelete = document.createElement("button");
-			btnDelete.innerHTML = "D";
 			let space = document.createElement("hr");
 			let h4Description = document.createElement("h4");
-			h4Description.className = "project-description " + projectsArr[i].getTitle() + i;
+			/* This elements are for editing the project */
+			let inputTitle = document.createElement("input");
+			let inputDescription = document.createElement("textarea");
+			let btnOk = document.createElement("button");
+			/* Set attributes. */
+			spanProject.className = "project-container " + projectTitle;
+			spanTitleContainer.className = "project-title-container " + projectTitle;
+			h2Title.className = "project-title " + projectTitle;
+			spanButtonsContainer.className = "project-buttons-container " + projectTitle;
+			btnEdit.className = "project-btn-edit " + projectTitle;
+			btnDelete.className = "project-btn-delete " + projectTitle;
+			h4Description.className = "project-description " + projectTitle;
+			/* This elemets are for editing the project */
+			inputTitle.className = "project-title-input " + projectTitle;
+			inputDescription.className = "project-description-input " + projectTitle;
+			btnOk.className = "project-btn-ok " + projectTitle;
+			/* Add Text to the elements */
 			h2Title.innerHTML = projectsArr[i].getTitle();
 			h4Description.innerHTML = projectsArr[i].getDescription();
+			btnDelete.innerHTML = "D";
+			btnEdit.innerHTML = "E";
+			/* This elements is for editing the project */
+			inputTitle.placeholder = "Title";
+			inputTitle.required = true;
+			inputDescription.placeholder = "Description";
+			inputDescription.required = true;
+			btnOk.innerHTML = "OK";
+			/* Add the elements into the containers */
 			spanButtonsContainer.appendChild(btnEdit);
 			spanButtonsContainer.appendChild(btnDelete);
+			spanButtonsContainer.appendChild(btnOk); // For editing the project
 			spanTitleContainer.appendChild(h2Title);
+			spanTitleContainer.appendChild(inputTitle); // For editing the project
 			spanTitleContainer.appendChild(spanButtonsContainer);
 			spanProject.appendChild(spanTitleContainer);
 			spanProject.appendChild(space);
 			spanProject.appendChild(h4Description);
-			setProjectClickEvent(spanProject, btnEdit, btnDelete);
+			spanProject.appendChild(inputDescription); // For editing the project
+			/* Set events */
+			setProjectClickEvent(spanProject, btnEdit, btnDelete, btnOk);
+			/* And add to our body */
 			projectsBody.appendChild(spanProject);
+		}
+	}
+
+	const renderEditProject = (divProject) => {
+		/* We hide the elements we don't need
+		 * and display the ones that we need. */
+		console.log(divProject.className += " edit");
+	}
+
+	const getFormValues = (index, divProject) => {
+		let title = divProject.children[0].children[1].value;
+		let description = divProject.children[3].value;
+		if(title === "" && description === ""){
+			alert("Please enter a Title and a Description");
+		}else{
+			Index.updateProject(index, title, description);
 		}
 	}
 
@@ -181,7 +225,7 @@ const Dom = (() => {
 		setStyle();
 	}
 
-	return { init, renderProjects, renderTodosFromProject };
+	return { init, renderProjects, renderTodosFromProject, renderEditProject };
 })();
 
 export { Dom };
