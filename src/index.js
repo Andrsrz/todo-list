@@ -10,8 +10,7 @@ const Index = (() => {
 		Dom.renderProjects(projects);
 	}
 
-	const getTodosFromProject = (element) => {
-		let elementClass = element.target.className;
+	const getTodosFromProject = (elementClass) => {
 		let id = "";
 		/* With this procedure we get the id from the
 		 * element, sorting the array and getting everything
@@ -24,6 +23,9 @@ const Index = (() => {
 				break;
 			}
 		}
+		/* We get the project with the id that we
+		 * sorted previously */
+		Dom.renderTodosFromProject(projects[id[id.length - 1]].getTodos());
 	}
 
 	const render = () => {

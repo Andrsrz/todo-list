@@ -44,7 +44,7 @@ const Dom = (() => {
 
 	const setProjectClickEvent = (span) => {
 		span.addEventListener("click", function (e) {
-			Index.getTodosFromProject(e);
+			Index.getTodosFromProject(e.target.className);
 		}, false);
 	}
 
@@ -67,6 +67,10 @@ const Dom = (() => {
 			setProjectClickEvent(spanProject);
 			projectsBody.appendChild(spanProject);
 		}
+	}
+
+	const renderTodosFromProject = (todosArr) => {
+
 	}
 
 	const renderFooter = () => {
@@ -95,7 +99,7 @@ const Dom = (() => {
 		setStyle();
 	}
 
-	return { init, renderProjects };
+	return { init, renderProjects, renderTodosFromProject };
 })();
 
 export { Dom };
