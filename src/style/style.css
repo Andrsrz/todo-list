@@ -42,7 +42,7 @@ html, body {
 
 #site-projects > #site-projects-header {
 	height: 50px;
-	background-color: #FFFFFF;
+	background-color: transparent;
 }
 
 #site-projects-header > #add-project {
@@ -52,7 +52,7 @@ html, body {
 }
 
 #site-projects-body {
-	height: 840px;
+	height: 860px;
 	overflow-y: auto;
 }
 
@@ -104,13 +104,18 @@ html, body {
 
 #site-items > #site-items-header {
 	height: 50px;
-	background-color: #FFFFFF;
+	background-color: transparent;
 }
 
-#site-items-header > #add-item {
+#site-items-header > .button {
 	display: block;
 	margin: auto;
 	margin-top: 5px;
+}
+
+#site-items-body {
+	height: 860px;
+	overflow-y: auto;
 }
 
 .todo-container {
@@ -164,7 +169,7 @@ html, body {
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-content: center;
-	height: 100px;
+	height: 50px;
 }
 
 @media all and (max-width: 1000px) {
@@ -179,5 +184,10 @@ html, body {
 	#site-projects-body {
 		height: 250px;
 		overflow-y: scroll;
+	}
+
+	#site-projects-body {
+		height: 250px;
+		overflow-y: auto;
 	}
 }
