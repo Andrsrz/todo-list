@@ -52,9 +52,15 @@ const Dom = (() => {
 		}
 	}
 
-	const setProjectClickEvent = (span) => {
+	const setProjectClickEvent = (span, edit, del) => {
 		span.addEventListener("click", function (e) {
 			Index.getTodosFromProject(e.target.className);
+		}, false);
+		edit.addEventListener("click", function () {
+			console.log("edit project");
+		}, false);
+		del.addEventListener("click", function (e) {
+			Index.deleteProject(e.target.className);
 		}, false);
 	}
 
@@ -86,7 +92,7 @@ const Dom = (() => {
 			spanProject.appendChild(spanTitleContainer);
 			spanProject.appendChild(space);
 			spanProject.appendChild(h4Description);
-			setProjectClickEvent(spanProject);
+			setProjectClickEvent(spanProject, btnEdit, btnDelete);
 			projectsBody.appendChild(spanProject);
 		}
 	}

@@ -9,6 +9,10 @@ const Index = (() => {
 		projects.push(project);
 	}
 
+	const removeProject = (index) => {
+		projects.splice(index, 1);
+	}
+
 	const getProjects = () => projects;
 
 	const generateNewProject = () => {
@@ -24,7 +28,7 @@ const Index = (() => {
 		Dom.renderTodosFromProject(index);
 	}
 
-	const getTodosFromProject = (elementClass) => {
+	const getProjectIndex = (elementClass) => {
 		let id = "";
 		/* With this procedure we get the id from the
 		 * element, sorting the array and getting everything
@@ -37,16 +41,27 @@ const Index = (() => {
 				break;
 			}
 		}
-		console.log(id);
+		return id[id.length - 1];
+	}
+
+	const getTodosFromProject = (elementClass) => {
+		let id = getProjectIndex(elementClass);
 		/* We get the project's index sorted previously */
-		Dom.renderTodosFromProject(id[id.length - 1]);
+		Dom.renderTodosFromProject(id);
+	}
+
+	const deleteProject = (elementClass) => {
+		let id = getProjectIndex(elementClass);
+		removeProject(id);
+		Dom.renderProjects(projects);
 	}
 
 	const render = () => {
 		Dom.init();
 	}
 
-	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo };
+	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo,
+			 deleteProject };
 })();
 export { Index };
 
