@@ -1,10 +1,10 @@
 const Item = () => {
 	/* Default values */
-	var title = "";
-	var description = "";
-	var dueDate = "";
+	var title = "Title";
+	var description = "Description";
+	var dueDate = "Date";
 	var priority = "";
-	var notes = [];
+	var notes = [""];
 	const priorities = ["green", "yellow", "orange", "red"];
 
 	/* Setters */

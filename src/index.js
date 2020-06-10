@@ -1,13 +1,27 @@
 import { Dom } from './dom.js';
 import { Project } from './project.js';
+import { Item } from './item.js';
 
 const Index = (() => {
 	var projects = [];
 
+	const addProject = (project) => {
+		projects.push(project);
+	}
+
+	const getProjects = () => projects;
+
 	const generateNewProject = () => {
 		let project = Project();
-		projects.push(project);
+		addProject(project);
 		Dom.renderProjects(projects);
+	}
+
+	const generateNewTodo = (index) => {
+		/* Create New Todo */
+		let todo = Item();
+		projects[index].addTodo(todo);
+		Dom.renderTodosFromProject(index);
 	}
 
 	const getTodosFromProject = (elementClass) => {
@@ -23,16 +37,16 @@ const Index = (() => {
 				break;
 			}
 		}
-		/* We get the project with the id that we
-		 * sorted previously */
-		Dom.renderTodosFromProject(projects[id[id.length - 1]].getTodos());
+		console.log(id);
+		/* We get the project's index sorted previously */
+		Dom.renderTodosFromProject(id[id.length - 1]);
 	}
 
 	const render = () => {
 		Dom.init();
 	}
 
-	return { render, generateNewProject, getTodosFromProject };
+	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo };
 })();
 export { Index };
 

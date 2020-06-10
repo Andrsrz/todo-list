@@ -80,7 +80,7 @@ html, body {
 	background-color: #6F6ABA;
 }
 
-.project-contaier > #project-title {
+.project-contaier > .project-title {
 
 }
 
@@ -93,13 +93,69 @@ html, body {
 	height: 5px;
 }
 
-.project-container > #project-description {
+.project-container > .project-description {
 
 }
 
 #site-main > #site-items {
 	grid-area: items;
 	background-color: #888;
+}
+
+#site-items > #site-items-header {
+	height: 50px;
+	background-color: #FFFFFF;
+}
+
+#site-items-header > #add-item {
+	display: block;
+	margin: auto;
+	margin-top: 5px;
+}
+
+.todo-container {
+	display: block;
+	width: 90%;
+	height: 100px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #534ADF;
+	border-radius: 5px;
+}
+
+@keyframes todo-container-background {
+	from {background-color: #534ADF;}
+	to {background-color: #6F6ABA;}
+}
+
+.todo-container:hover {
+	animation-name: todo-container-background;
+	animation-duration: 1.5s;
+	cursor: pointer;
+	background-color: #6F6ABA;
+}
+
+.todo-contaier > .todo-title {
+
+}
+
+.todo-container > hr {
+	border: none;
+	border-top: 1px solid #333;
+	color: #333;
+	overflow: visible;
+	text-align: center;
+	height: 5px;
+}
+
+.todo-container > .todo-description {
+
+}
+
+.todo-container > .todo-due-date {
+
 }
 
 #site-footer {
