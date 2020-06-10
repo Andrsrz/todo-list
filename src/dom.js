@@ -95,6 +95,7 @@ const Dom = (() => {
 		let project = Index.getProjects()[index];
 		let todosArr = project.getTodos();
 		clearDiv(items);
+		clearDiv(itemsHeader);
 		items.appendChild(itemsHeader);
 		items.appendChild(itemsBody);
 		clearDiv(itemsBody);
