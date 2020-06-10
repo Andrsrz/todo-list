@@ -18,6 +18,7 @@ const Dom = (() => {
 		body.appendChild(main);
 		body.appendChild(footer);
 		renderProjectsHeader();
+		renderFooter();
 	}
 
 	const setNewProjectButtonEvent = (button) => {
@@ -42,7 +43,9 @@ const Dom = (() => {
 	}
 
 	const setProjectClickEvent = (span) => {
-		span.addEventListener("click", Index.printHelloOnClick, false);
+		span.addEventListener("click", function (e) {
+			Index.getTodosFromProject(e);
+		}, false);
 	}
 
 	/* Render the projects from the projects array */
@@ -50,12 +53,12 @@ const Dom = (() => {
 		clearProjectsDiv();
 		for(let i = 0; i < projectsArr.length; i++){
 			let spanProject = document.createElement("span");
-			spanProject.className = "project-container";
+			spanProject.className = "project-container " + projectsArr[i].getTitle() + i;
 			let h2Title = document.createElement("h2");
-			h2Title.className = "project-title"
+			h2Title.className = "project-title " + projectsArr[i].getTitle() + i;
 			let space = document.createElement("hr");
 			let h4Description = document.createElement("h4");
-			h4Description.className = "project-description";
+			h4Description.className = "project-description " + projectsArr[i].getTitle() + i;
 			h2Title.innerHTML = projectsArr[i].getTitle();
 			h4Description.innerHTML = projectsArr[i].getDescription();
 			spanProject.appendChild(h2Title);
@@ -64,6 +67,16 @@ const Dom = (() => {
 			setProjectClickEvent(spanProject);
 			projectsBody.appendChild(spanProject);
 		}
+	}
+
+	const renderFooter = () => {
+		let footerLinks = document.createElement("ul");
+		let linkToCode = document.createElement("li");
+		let linkToCodeIcon = document.createElement("i");
+		linkToCodeIcon.className = "fa fa-code";
+		linkToCode.appendChild(linkToCodeIcon);
+		footerLinks.appendChild(linkToCode);
+		footer.appendChild(footerLinks);
 	}
 
 	/* Set id to use inside the stylesheet */

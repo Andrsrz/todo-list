@@ -10,15 +10,27 @@ const Index = (() => {
 		Dom.renderProjects(projects);
 	}
 
-	const printHelloOnClick = () => {
-		console.log("Hello");
+	const getTodosFromProject = (element) => {
+		let elementClass = element.target.className;
+		let id = "";
+		/* With this procedure we get the id from the
+		 * element, sorting the array and getting everything
+		 * after the space. */
+		for(let i = 0; i < elementClass.length; i++){
+			if(elementClass[i] == " "){
+				for(let j = i; j < elementClass.length; j++){
+					id += elementClass[j];
+				}
+				break;
+			}
+		}
 	}
 
 	const render = () => {
 		Dom.init();
 	}
 
-	return { render, generateNewProject, printHelloOnClick };
+	return { render, generateNewProject, getTodosFromProject };
 })();
 export { Index };
 
