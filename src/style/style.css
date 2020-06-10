@@ -115,26 +115,26 @@ html, body {
 
 .todo-container {
 	display: block;
-	width: 90%;
+	width: 70%;
 	height: 100px;
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px;
-	background-color: #534ADF;
+	background-color: #D11B45;
 	border-radius: 5px;
 }
 
 @keyframes todo-container-background {
-	from {background-color: #534ADF;}
-	to {background-color: #6F6ABA;}
+	from {background-color: #D11B45;}
+	to {background-color: #9E3850;}
 }
 
 .todo-container:hover {
 	animation-name: todo-container-background;
 	animation-duration: 1.5s;
 	cursor: pointer;
-	background-color: #6F6ABA;
+	background-color: #9E3850;
 }
 
 .todo-contaier > .todo-title {
