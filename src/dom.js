@@ -57,12 +57,18 @@ const Dom = (() => {
 			Index.getTodosFromProject(e.target.className);
 		}, false);
 		edit.addEventListener("click", function (e) {
+			// Disable add buttons
+			let newProject = document.getElementById("add-project");
+			newProject.disabled = true;
 			Index.editProject(e.target.parentNode.parentNode.parentNode);
 		}, false);
 		del.addEventListener("click", function (e) {
 			Index.deleteProject(e.target.className);
 		}, false);
 		ok.addEventListener("click", function (e) {
+			// Enable add buttons
+			let newProject = document.getElementById("add-project");
+			newProject.disabled = false;
 			getFormValues(e.target.className, e.target.parentNode.parentNode.parentNode);
 		}, false);
 	}
@@ -152,7 +158,7 @@ const Dom = (() => {
 		let addTodo = document.createElement("button");
 		addTodo.innerHTML = "New Todo";
 		addTodo.className = "button";
-		addTodo.id = "add-todo-" + Index.getProjects()[index].getTitle();
+		addTodo.id = "add-todo";
 		setNewTodoButtonEvent(addTodo, index);
 		if(itemsHeader.appendChild(addTodo))
 			return true;
