@@ -205,6 +205,18 @@ html, body {
 	border-radius: 5px;
 }
 
+.high {
+	border: 3px solid red;
+}
+
+.neutral {
+	border: 3px solid yellow;
+}
+
+.low {
+	border: 3px solid green;
+}
+
 .edit-todo {
 	height: 300px;
 }

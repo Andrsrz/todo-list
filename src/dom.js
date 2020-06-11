@@ -228,6 +228,19 @@ const Dom = (() => {
 				let btnOk = document.createElement("button");
 				/* Set attributes to elements */
 				divTodo.className = "todo-container " + todoTitle + " " + todosArr[i].getPriority();
+				/* Set div border color from priority */
+				let todoPriority = todosArr[i].getPriority();
+				switch(todoPriority){
+					case 'High':
+						divTodo.className += " high";
+						break;
+					case 'Neutral':
+						divTodo.className += " neutral";
+						break;
+					case 'Low':
+						divTodo.className += " low";
+						break;
+				}
 				spanTitleContainer.className = "todo-title-container " + todoTitle;
 				h2Title.className = "todo-title " + todoTitle;
 				spanButtonsContainer.className = "todo-buttons-container " + todoTitle;
