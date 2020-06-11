@@ -149,7 +149,7 @@ const Dom = (() => {
 	const renderEditProject = (divProject) => {
 		/* We hide the elements we don't need
 		 * and display the ones that we need. */
-		console.log(divProject.className += " edit");
+		divProject.className += " edit";
 	}
 
 	const getFormValues = (index, divProject) => {
