@@ -5,7 +5,6 @@
 * [Webpack](https://webpack.js.org/).
   * Load scripts with import and export statements.
   * Dynamicly load HTML from JavaScript.
-  * [Load images](https://webpack.js.org/guides/asset-management/#loading-images).
   * [Load CSS](https://webpack.js.org/guides/asset-management/#loading-css).
 
 ## Acknowledgement
