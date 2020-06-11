@@ -24,6 +24,7 @@ const Index = (() => {
 	const generateNewTodo = (index) => {
 		/* Create New Todo */
 		let todo = Item();
+		todo.setProjectId(index);
 		projects[index].addTodo(todo);
 		Dom.renderTodosFromProject(index);
 	}
@@ -63,7 +64,6 @@ const Index = (() => {
 
 	const deleteProject = (elementClass) => {
 		let id = getProjectIndex(elementClass);
-		console.log(id);
 		removeProject(id);
 		Dom.renderProjects(projects);
 		Dom.renderTodosFromProject(null);
@@ -73,8 +73,10 @@ const Index = (() => {
 		Dom.renderEditTodo(divTodo);
 	}
 
-	const updateTodo = (elementClass, title, description) => {
-
+	const updateTodo = (projectId, buttonClass, title, description, dueDate, priority, notes) => {
+		let todoId = getProjectIndex(buttonClass);
+		projects[projectId].updateTodo(todoId, title, description, dueDate, priority, notes);
+		Dom.renderTodosFromProject(projectId);
 	}
 
 	const deleteTodo = (elementClass) => {

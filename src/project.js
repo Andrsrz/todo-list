@@ -16,12 +16,20 @@ const Project = () => {
 		todos.push(todo);
 	}
 
+	const updateTodo = (index, title, description, dueDate, priority, notes) => {
+		todos[index].setTitle(title);
+		todos[index].setDescription(description);
+		todos[index].setDueDate(dueDate);
+		todos[index].setPriority(priority);
+		todos[index].setNotes(notes);
+	}
+
 	const removeTodo = (index) => {
 		todos.splice(index, 1);
 	}
 
 	return { setTitle, setDescription, getTitle, getDescription, getTodos,
-			 addTodo, removeTodo };
+			 addTodo, updateTodo, removeTodo };
 };
 
 export { Project };

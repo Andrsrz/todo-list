@@ -164,7 +164,7 @@ const Dom = (() => {
 		}
 	}
 
-	const setTodoClickEvent = (edit, del, ok) => {
+	const setTodoClickEvent = (edit, del, ok, projectId) => {
 		edit.addEventListener("click", function (e) {
 			// Disable add buttons
 			let newTodo = document.getElementById("add-todo");
@@ -178,14 +178,14 @@ const Dom = (() => {
 			// Enable add buttons
 			let newTodo = document.getElementById("add-todo");
 			newTodo.disabled = false;
-			getTodoFormValues(e.target.className, e.target.parentNode.parentNode.parentNode);
+			getTodoFormValues(projectId, e.target.className, e.target.parentNode.parentNode.parentNode);
 		}, false)
 	}
 
 	const renderTodosHeader = (index) => {
 		let addTodo = document.createElement("button");
 		addTodo.innerHTML = "New Todo";
-		addTodo.className = "button";
+		addTodo.className = "button " + index;
 		addTodo.id = "add-todo";
 		setNewTodoButtonEvent(addTodo, index);
 		if(itemsHeader.appendChild(addTodo))
@@ -319,7 +319,7 @@ const Dom = (() => {
 				}
 				divTodo.appendChild(inputNotes);
 				/* Set events */
-				setTodoClickEvent(btnEdit, btnDelete, btnOk);
+				setTodoClickEvent(btnEdit, btnDelete, btnOk, index);
 				/* And add to our body */
 				itemsBody.appendChild(divTodo);
 
@@ -339,6 +339,18 @@ const Dom = (() => {
 		divTodo.className += " edit-todo";
 	}
 
+	const getTodoFormValues = (projectId, todoId, divTodo) => {
+		let title = divTodo.children[0].children[1].value;
+		let description = divTodo.children[3].value;
+		let date = divTodo.children[5].children[1].value;
+		let priority = divTodo.children[5].children[3].value;
+		let notes = divTodo.children[6].value;
+		if(title === "" || description === "" || date === "" || priority === ""){
+			alert("Please enter all required values");
+		}else{
+			Index.updateTodo(projectId, todoId, title, description, date, priority, notes);
+		}
+	}
 
 	const renderFooter = () => {
 		let footerLinks = document.createElement("ul");
