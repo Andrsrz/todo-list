@@ -393,9 +393,10 @@ textarea {
 	flex-shrink: 0;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: flex-start;
-	align-content: center;
-	height: 50px;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+	color: #000;
 }
 
 @media all and (max-width: 1000px) {
