@@ -11,6 +11,7 @@ html, body {
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	color: #F0EAD6;
 }
 
 #site-body {
@@ -35,9 +36,10 @@ html, body {
 
 #site-main > #site-projects {
 	grid-area: projects;
-	background-color: #555;
+	background-color: #343148;
 	align-content: flex-start;
 	justify-content: flex-start;
+	border-right: 3px solid #F0EAD6;
 }
 
 #site-projects > #site-projects-header {
@@ -49,6 +51,25 @@ html, body {
 	display: block;
 	margin: auto;
 	margin-top: 5px;
+}
+
+input[type="text"], textarea {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+
+.button {
+	font-weight: bold;
+	background-color: #55B4B0;
+	border-color: #55B4B0;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: #7FCDCD;
 }
 
 #site-projects-body {
@@ -64,8 +85,9 @@ html, body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px;
-	background-color: #534ADF;
+	background-color: #6B5B95;
 	border-radius: 5px;
+	border: 3px solid #45B8AC;
 }
 
 .edit {
@@ -73,7 +95,7 @@ html, body {
 }
 
 @keyframes project-container-background {
-	from {background-color: #534ADF;}
+	from {background-color: #6B5B95;}
 	to {background-color: #6F6ABA;}
 }
 
@@ -174,7 +196,7 @@ html, body {
 
 #site-main > #site-items {
 	grid-area: items;
-	background-color: #888;
+	background-color: #6B5B95;
 }
 
 #site-items > #site-items-header {
@@ -201,35 +223,28 @@ html, body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px;
-	background-color: #D11B45;
+	background-color: #343148;
 	border-radius: 5px;
 }
 
+.todo-container input[type="text"], .todo-container textarea {
+	color: #F0EAD6;
+}
+
 .high {
-	border: 3px solid red;
+	border: 3px solid #BD3D3A;
 }
 
 .neutral {
-	border: 3px solid yellow;
+	border: 3px solid #D5AE41;
 }
 
 .low {
-	border: 3px solid green;
+	border: 3px solid #88B04B;
 }
 
 .edit-todo {
 	height: 300px;
-}
-
-@keyframes todo-container-background {
-	from {background-color: #D11B45;}
-	to {background-color: #9E3850;}
-}
-
-.todo-container:hover {
-	animation-name: todo-container-background;
-	animation-duration: 1.5s;
-	background-color: #9E3850;
 }
 
 .todo-container > .todo-title-container {
@@ -294,8 +309,8 @@ html, body {
 
 .todo-container > hr {
 	border: none;
-	border-top: 1px solid #333;
-	color: #333;
+	border-top: 1px solid #F0EAD6;
+	color: #F0EAD6;
 	overflow: visible;
 	text-align: center;
 	height: 5px;
@@ -381,9 +396,14 @@ html, body {
 		grid-template-rows: 1fr 2fr;
 	}
 
-	#site-projects-body {
-		height: 250px;
-		overflow-y: scroll;
+	#site-main > #site-projects {
+		border-right: 0;
+		border-bottom: 3px solid #F0EAD6;
+	}
+
+	#site-items-body {
+		height: 550px;
+		overflow-y: auto;
 	}
 
 	#site-projects-body {
