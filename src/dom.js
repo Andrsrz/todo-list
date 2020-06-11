@@ -185,33 +185,57 @@ const Dom = (() => {
 			let todosArr = project.getTodos();
 			renderTodosHeader(index);
 			for(let i = 0; i < todosArr.length; i++){
+				let todoTitle = todosArr[i].getTtile() + i;
+				/* Create elements */
 				let divTodo = document.createElement("div");
-				divTodo.className = "todo-container " + todosArr[i].getTitle() + i;
 				let h2Title = document.createElement("h2");
-				h2Title.className = "todo-title " + todosArr[i].getTitle() + i;
 				let space = document.createElement("hr");
 				let h4Description = document.createElement("h4");
-				h4Description.className = "todo-description " + todosArr[i].getTitle() + i;
 				let h4DueDate = document.createElement("h4");
-				h4DueDate.className = "todo-due-date " + todosArr[i].getTitle() + i;
+				/* This elements are for editing the todo item */
+				let inputTitle = document.createElement("input");
+				let inputDescription = document.createElement("textarea");
+				let inputDueDate = document.createElement("input");
+				let inputPriority = document.createElement("select");
+				let inputNotes = document.createElement("textarea");
+				let btnOk = document.createElement("button");
+				/* Set attributes to elements */
+				divTodo.className = "todo-container " + todoTitle;
+				h2Title.className = "todo-title " + todoTitle;
+				h4Description.className = "todo-description " + todoTitle;
+				h4DueDate.className = "todo-due-date " + todoTitle;
 				h2Title.innerHTML = todosArr[i].getTitle();
 				h4Description.innerHTML = todosArr[i].getDescription();
 				h4DueDate.innerHTML = todosArr[i].getDueDate();
+				/* This elements are for editing the todo item */
+				inputTitle.className = "todo-title-input " + todoTitle;
+				inputTitle.placeholder = "Title";
+				inputTitle.required = true;
+				inputDescription.className = "todo-description-input " + todoTitle;
+				inputDescription.placeholder = "Description";
+				inputDescription.required = true;
+				inputDueDate.className = "todo-due-date-input " + todoTitle;
+				inputDueDate.required = true;
+				inputPriority.className = "todo-priority-input " + todoTitle;
+				inputPriority.required = true;
+				inputNotes.className = "todo-notes-input " + todoTitle;
+				inputNotes.placeholder = "Notes";
+				btnOk.className = "todo-btn-ok " + todoTitle;
+				/* Add them to the Parent */
 				divTodo.appendChild(h2Title);
 				divTodo.appendChild(space);
 				divTodo.appendChild(h4Description);
 				divTodo.appendChild(h4DueDate);
 				if(todosArr[i].getNotes().lenght > 0){
 					let notes = document.createElement("span");
-					notes.className = "todo-notes " + todosArr[i].getTitle() + i;
+					notes.className = "todo-notes " + todoTitle;
 					for(let j = 0; i < todosArr[i].getNotes().length; j++){
 						let note = document.createElement("p");
-						note.className = "todo-note " + todosArr[i].getTitle() + i;
+						note.className = "todo-note " + todoTitle;
 						notes.appendChild(note);
 					}
 					divTodo.appendChild(notes);
 				}
-				// setTodoClickEvent(divTodo);
 				itemsBody.appendChild(divTodo);
 			}
 		}
