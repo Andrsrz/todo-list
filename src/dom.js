@@ -312,7 +312,7 @@ const Dom = (() => {
 	const renderEditTodo = (divTodo) => {
 		/* We hide the elements we don't need
 		 * and display the ones that we need. */
-		divTodo.className += " edit";
+		divTodo.className += " edit-todo";
 	}
 
 
