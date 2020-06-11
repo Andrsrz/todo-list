@@ -11,7 +11,7 @@ const Dom = (() => {
 	const itemsBody = document.createElement("div");
 	const items = document.createElement("div");
 	const footer = document.createElement("footer");
-	const todoPriorities = ["green", "yellow", "orange", "red"];
+	const todoPriorities = ["High", "Neutral", "Low"];
 
 	const populatePage = () => {
 		projects.appendChild(projectsHeader);
@@ -297,6 +297,14 @@ const Dom = (() => {
 				divOptions.appendChild(labelDueDate);
 				divOptions.appendChild(inputDueDate);
 				divOptions.appendChild(labelPriority);
+				/* Populate Priorities */
+				for(let i = 0; i < todoPriorities.length; i++){
+					let priorityItem = document.createElement("option");
+					priorityItem.className = "todo-priority-option " + todoTitle;
+					priorityItem.value = todoPriorities[i];
+					priorityItem.innerHTML = todoPriorities[i];
+					inputPriority.appendChild(priorityItem);
+				}
 				divOptions.appendChild(inputPriority);
 				divTodo.appendChild(divOptions);
 				if(todosArr[i].getNotes().lenght > 0){

@@ -337,7 +337,7 @@ html, body {
 }
 
 .todo-options-container > .todo-priority-input {
-	height: 20px;
+	height: 30px;
 }
 
 .todo-container > .todo-notes-input {
