@@ -111,6 +111,7 @@ const Dom = (() => {
 			/* This elements is for editing the project
 			 * Checking if the projects values are the default so we can
 			 * get a better UX filling the input with previous values. */
+			inputTitle.type = "text";
 			inputTitle.placeholder = "Title";
 			if(projectsArr[i].getTitle() != "Title"){
 				inputTitle.value = projectsArr[i].getTitle();
@@ -203,7 +204,7 @@ const Dom = (() => {
 			let todosArr = project.getTodos();
 			renderTodosHeader(index);
 			for(let i = 0; i < todosArr.length; i++){
-				let todoTitle = todosArr[i].getTtile() + i;
+				let todoTitle = todosArr[i].getTitle() + i;
 				/* Create elements */
 				let divTodo = document.createElement("div");
 				let spanTitleContainer = document.createElement("span");
@@ -232,12 +233,14 @@ const Dom = (() => {
 				h4DueDate.className = "todo-due-date " + todoTitle;
 				/* This elements are for editing the todo item */
 				inputTitle.className = "todo-title-input " + todoTitle;
+				inputTitle.type = "text";
 				inputTitle.placeholder = "Title";
 				inputTitle.required = true;
 				inputDescription.className = "todo-description-input " + todoTitle;
 				inputDescription.placeholder = "Description";
 				inputDescription.required = true;
 				inputDueDate.className = "todo-due-date-input " + todoTitle;
+				inputDueDate.type = "date";
 				inputDueDate.required = true;
 				inputPriority.className = "todo-priority-input " + todoTitle;
 				inputPriority.required = true;
@@ -271,11 +274,15 @@ const Dom = (() => {
 				spanButtonsContainer.appendChild(btnDelete);
 				spanButtonsContainer.appendChild(btnOk);
 				spanTitleContainer.appendChild(h2Title);
+				spanTitleContainer.appendChild(inputTitle);
 				spanTitleContainer.appendChild(spanButtonsContainer);
 				divTodo.appendChild(spanTitleContainer);
 				divTodo.appendChild(space);
 				divTodo.appendChild(h4Description);
+				divTodo.appendChild(inputDescription);
 				divTodo.appendChild(h4DueDate);
+				divTodo.appendChild(inputDueDate);
+				divTodo.appendChild(inputPriority);
 				if(todosArr[i].getNotes().lenght > 0){
 					let notes = document.createElement("span");
 					notes.className = "todo-notes " + todoTitle;
@@ -286,6 +293,7 @@ const Dom = (() => {
 					}
 					divTodo.appendChild(notes);
 				}
+				divTodo.appendChild(inputNotes);
 				/* Set events */
 				setTodoClickEvent(btnEdit, btnDelete, btnOk);
 				/* And add to our body */
@@ -300,6 +308,13 @@ const Dom = (() => {
 			}
 		}
 	}
+
+	const renderEditTodo = (divTodo) => {
+		/* We hide the elements we don't need
+		 * and display the ones that we need. */
+		divTodo.className += " edit";
+	}
+
 
 	const renderFooter = () => {
 		let footerLinks = document.createElement("ul");
@@ -329,7 +344,8 @@ const Dom = (() => {
 		setStyle();
 	}
 
-	return { init, renderProjects, renderTodosFromProject, renderEditProject };
+	return { init, renderProjects, renderTodosFromProject, renderEditProject,
+			 renderEditTodo };
 })();
 
 export { Dom };

@@ -69,12 +69,24 @@ const Index = (() => {
 		Dom.renderTodosFromProject(null);
 	}
 
+	const editTodo = (divTodo) => {
+		Dom.renderEditTodo(divTodo);
+	}
+
+	const updateTodo = (elementClass, title, description) => {
+
+	}
+
+	const deleteTodo = (elementClass) => {
+
+	}
+
 	const render = () => {
 		Dom.init();
 	}
 
 	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo,
-			 editProject, updateProject, deleteProject };
+			 editProject, updateProject, deleteProject, editTodo, updateTodo, deleteTodo };
 })();
 export { Index };
 
