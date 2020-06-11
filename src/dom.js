@@ -162,6 +162,24 @@ const Dom = (() => {
 		}
 	}
 
+	const setTodoClickEvent = (edit, del, ok) => {
+		edit.addEventListener("click", function (e) {
+			// Disable add buttons
+			let newTodo = document.getElementById("add-todo");
+			newTodo.disabled = true;
+			Index.editTodo(e.target.parentNode.parentNode.parentNode);
+		}, false);
+		del.addEventListener("click", function (e) {
+			Index.deleteTodo(e.target.className);
+		}, false);
+		ok.addEventListener("click", function (e) {
+			// Enable add buttons
+			let newTodo = document.getElementById("add-todo");
+			newTodo.disabled = false;
+			getTodoFormValues(e.target.className, e.target.parentNode.parentNode.parentNode);
+		}, false)
+	}
+
 	const renderTodosHeader = (index) => {
 		let addTodo = document.createElement("button");
 		addTodo.innerHTML = "New Todo";
@@ -188,7 +206,11 @@ const Dom = (() => {
 				let todoTitle = todosArr[i].getTtile() + i;
 				/* Create elements */
 				let divTodo = document.createElement("div");
+				let spanTitleContainer = document.createElement("span");
 				let h2Title = document.createElement("h2");
+				let spanButtonsContainer = document.createElement("span");
+				let btnEdit = document.createElement("button");
+				let btnDelete = document.createElement("button");
 				let space = document.createElement("hr");
 				let h4Description = document.createElement("h4");
 				let h4DueDate = document.createElement("h4");
@@ -200,13 +222,14 @@ const Dom = (() => {
 				let inputNotes = document.createElement("textarea");
 				let btnOk = document.createElement("button");
 				/* Set attributes to elements */
-				divTodo.className = "todo-container " + todoTitle;
+				divTodo.className = "todo-container " + todoTitle + " " + todosArr[i].getPriority();
+				spanTitleContainer.className = "todo-title-container " + todoTitle;
 				h2Title.className = "todo-title " + todoTitle;
+				spanButtonsContainer.className = "todo-buttons-container " + todoTitle;
+				btnEdit.className = "todo-btn-edit " + todoTitle;
+				btnDelete.className = "todo-btn-delete " + todoTitle;
 				h4Description.className = "todo-description " + todoTitle;
 				h4DueDate.className = "todo-due-date " + todoTitle;
-				h2Title.innerHTML = todosArr[i].getTitle();
-				h4Description.innerHTML = todosArr[i].getDescription();
-				h4DueDate.innerHTML = todosArr[i].getDueDate();
 				/* This elements are for editing the todo item */
 				inputTitle.className = "todo-title-input " + todoTitle;
 				inputTitle.placeholder = "Title";
@@ -221,8 +244,35 @@ const Dom = (() => {
 				inputNotes.className = "todo-notes-input " + todoTitle;
 				inputNotes.placeholder = "Notes";
 				btnOk.className = "todo-btn-ok " + todoTitle;
+				/* Add Text to the elements */
+				h2Title.innerHTML = todosArr[i].getTitle();
+				h4Description.innerHTML = todosArr[i].getDescription();
+				h4DueDate.innerHTML = todosArr[i].getDueDate();
+				btnDelete.innerHTML = "D";
+				btnEdit.innerHTML = "E";
+				/* This elements are for editing the todo item
+				 * Checking if the projects values are the default so we can
+				 * get a better UX filling the input with previous values. */
+				btnOk.innerHTML = "OK";
+				if(todosArr[i].getTitle() != "Title"){
+					inputTitle.value = todosArr[i].getTitle();
+				}
+				if(todosArr[i].getDescription() != "Description"){
+					inputDescription.value = todosArr[i].getDescription();
+				}
+				if(todosArr[i].getDueDate() != "Date"){
+					inputDueDate.value = todosArr[i].getDueDate();
+				}
+				if(todosArr[i].getNotes().length > 0){
+					inputNotes.value = todosArr[i].getNotes();
+				}
 				/* Add them to the Parent */
-				divTodo.appendChild(h2Title);
+				spanButtonsContainer.appendChild(btnEdit);
+				spanButtonsContainer.appendChild(btnDelete);
+				spanButtonsContainer.appendChild(btnOk);
+				spanTitleContainer.appendChild(h2Title);
+				spanTitleContainer.appendChild(spanButtonsContainer);
+				divTodo.appendChild(spanTitleContainer);
 				divTodo.appendChild(space);
 				divTodo.appendChild(h4Description);
 				divTodo.appendChild(h4DueDate);
@@ -236,7 +286,17 @@ const Dom = (() => {
 					}
 					divTodo.appendChild(notes);
 				}
+				/* Set events */
+				setTodoClickEvent(btnEdit, btnDelete, btnOk);
+				/* And add to our body */
 				itemsBody.appendChild(divTodo);
+
+				/* Click edit if the project is new */
+				if(todosArr[i].getTitle() == "Title" &&
+				   todosArr[i].getDescription() == "Description" &&
+				   todosArr[i].getDueDate() == "Date"){
+					btnEdit.click();
+				}
 			}
 		}
 	}
