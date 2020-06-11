@@ -54,10 +54,15 @@ html, body {
 }
 
 input[type="text"], textarea {
+	font-weight: bold;
 	background-color: transparent;
 	border-color: transparent;
 }
 
+textarea {
+	border: 1px solid #333;
+	border-radius: 5px;
+}
 
 .button {
 	font-weight: bold;
@@ -229,6 +234,12 @@ input[type="text"], textarea {
 
 .todo-container input[type="text"], .todo-container textarea {
 	color: #F0EAD6;
+	font-weight: bold;
+}
+
+.todo-container textarea {
+	border: 1px solid #F0EAD6;
+	border-radius: 5px;
 }
 
 .high {
