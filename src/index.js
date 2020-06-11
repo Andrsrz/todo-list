@@ -1,3 +1,7 @@
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
 import { Dom } from './dom.js';
 import { Project } from './project.js';
 import { Item } from './item.js';

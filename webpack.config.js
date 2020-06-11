@@ -15,7 +15,7 @@ module.exports = {
 					options: {
 						name: '[name].[ext]',
 						outputPath: 'fonts/',
-						publicPath: '../',
+						publicPath: 'dist/fonts',
 					},
 				}],
 			},
@@ -24,6 +24,13 @@ module.exports = {
 				use: [
 					'style-loader',
 					'css-loader',
+				],
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					'style-loader',
+					'sass-loader',
 				],
 			},
 		],

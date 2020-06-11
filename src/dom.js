@@ -12,6 +12,7 @@ const Dom = (() => {
 	const items = document.createElement("div");
 	const footer = document.createElement("footer");
 	const todoPriorities = ["High", "Neutral", "Low"];
+	const githubpage = "https://github.com/Andrsrz/todo-list";
 
 	const populatePage = () => {
 		projects.appendChild(projectsHeader);
@@ -365,11 +366,20 @@ const Dom = (() => {
 		}
 	}
 
+	const setFooterIconOnClickEvent = (goToCode) => {
+		goToCode.addEventListener("click", function () {
+			window.open(githubpage, '_blank');
+		}, false);
+	}
+
 	const renderFooter = () => {
 		let footerLinks = document.createElement("ul");
 		let linkToCode = document.createElement("li");
-		let linkToCodeIcon = document.createElement("i");
-		linkToCodeIcon.className = "fa fa-code";
+		linkToCode.title = "Show me the code";
+		linkToCode.className = "code-icon";
+		let linkToCodeIcon = document.createElement("span");
+		linkToCodeIcon.className = "fas fa-code";
+		setFooterIconOnClickEvent(linkToCode);
 		linkToCode.appendChild(linkToCodeIcon);
 		footerLinks.appendChild(linkToCode);
 		footer.appendChild(footerLinks);

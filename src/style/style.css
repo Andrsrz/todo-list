@@ -1,8 +1,10 @@
-@import '~font-awesome/css/font-awesome.css';
-
 * {
 	margin: 0;
 	padding: 0;
+}
+
+ul li {
+	list-style: none;
 }
 
 html, body {
@@ -390,6 +392,7 @@ textarea {
 }
 
 #site-footer {
+	background-color: #29234F;
 	flex-shrink: 0;
 	display: flex;
 	flex-flow: row nowrap;
@@ -397,6 +400,14 @@ textarea {
 	align-items: center;
 	height: 30px;
 	color: #000;
+}
+
+#site-footer .code-icon {
+	color: #55B4B0;
+}
+
+#site-footer .code-icon:hover {
+	cursor: pointer;
 }
 
 @media all and (max-width: 1000px) {
