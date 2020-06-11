@@ -108,10 +108,18 @@ const Dom = (() => {
 			h4Description.innerHTML = projectsArr[i].getDescription();
 			btnDelete.innerHTML = "D";
 			btnEdit.innerHTML = "E";
-			/* This elements is for editing the project */
+			/* This elements is for editing the project
+			 * Checking if the projects values are the default so we can
+			 * get a better UX filling the input with previous values. */
 			inputTitle.placeholder = "Title";
+			if(projectsArr[i].getTitle() != "Title"){
+				inputTitle.value = projectsArr[i].getTitle();
+			}
 			inputTitle.required = true;
 			inputDescription.placeholder = "Description";
+			if(projectsArr[i].getDescription() != "Description"){
+				inputDescription.value = projectsArr[i].getDescription();
+			}
 			inputDescription.required = true;
 			btnOk.innerHTML = "OK";
 			/* Add the elements into the containers */
