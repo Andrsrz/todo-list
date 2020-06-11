@@ -5,7 +5,6 @@ const Item = () => {
 	var dueDate = "Date";
 	var priority = "";
 	var notes = [""];
-	const priorities = ["green", "yellow", "orange", "red"];
 
 	/* Setters */
 	const setTitle = (newTitle) => title = newTitle;
@@ -20,11 +19,10 @@ const Item = () => {
 	const getDueDate = () => dueDate;
 	const getPriority = () => priority;
 	const getNotes = () => notes;
-	const getPriorities = () => priorities;
 
 	return { setTitle, setDescription, setDueDate, setPriority, addNote,
 			 removeNote, getTitle, getDescription, getDueDate, getPriority,
-			 getNotes, getPriorities };
+			 getNotes };
 };
 
 export { Item };

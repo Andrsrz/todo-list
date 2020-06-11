@@ -324,11 +324,31 @@ html, body {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-around;
-	align-content: center;
+	align-items: center;
+	height: 50px;
 }
 
 .todo-options-container {
 	margin: 10px;
+}
+
+.todo-options-container > .todo-due-date-input {
+	height: 20px;
+}
+
+.todo-options-container > .todo-priority-input {
+	height: 20px;
+}
+
+.todo-container > .todo-notes-input {
+	display: none;
+}
+
+.edit-todo > .todo-notes-input {
+	display: block;
+	width: 100%;
+	height: 22%;
+	resize: none;
 }
 
 #site-footer {

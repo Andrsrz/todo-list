@@ -11,6 +11,7 @@ const Dom = (() => {
 	const itemsBody = document.createElement("div");
 	const items = document.createElement("div");
 	const footer = document.createElement("footer");
+	const todoPriorities = ["green", "yellow", "orange", "red"];
 
 	const populatePage = () => {
 		projects.appendChild(projectsHeader);
@@ -219,7 +220,9 @@ const Dom = (() => {
 				let inputTitle = document.createElement("input");
 				let inputDescription = document.createElement("textarea");
 				let divOptions = document.createElement("div");
+				let labelDueDate = document.createElement("label");
 				let inputDueDate = document.createElement("input");
+				let labelPriority = document.createElement("label");
 				let inputPriority = document.createElement("select");
 				let inputNotes = document.createElement("textarea");
 				let btnOk = document.createElement("button");
@@ -241,10 +244,16 @@ const Dom = (() => {
 				inputDescription.placeholder = "Description";
 				inputDescription.required = true;
 				divOptions.className = "todo-options-container " + todoTitle;
+				labelDueDate.className = "todo-due-date-label " + todoTitle;
+				labelDueDate.for = "due-date";
 				inputDueDate.className = "todo-due-date-input " + todoTitle;
+				inputDueDate.name = "due-date";
 				inputDueDate.type = "date";
 				inputDueDate.required = true;
+				labelPriority.className = "todo-priority-label " + todoTitle;
+				labelPriority.for = "priority";
 				inputPriority.className = "todo-priority-input " + todoTitle;
+				inputPriority.name = "priority";
 				inputPriority.required = true;
 				inputNotes.className = "todo-notes-input " + todoTitle;
 				inputNotes.placeholder = "Notes";
@@ -258,6 +267,8 @@ const Dom = (() => {
 				/* This elements are for editing the todo item
 				 * Checking if the projects values are the default so we can
 				 * get a better UX filling the input with previous values. */
+				labelDueDate.innerHTML = "Due Date : ";
+				labelPriority.innerHTML = "Priority : ";
 				btnOk.innerHTML = "OK";
 				if(todosArr[i].getTitle() != "Title"){
 					inputTitle.value = todosArr[i].getTitle();
@@ -283,7 +294,9 @@ const Dom = (() => {
 				divTodo.appendChild(h4Description);
 				divTodo.appendChild(inputDescription);
 				divTodo.appendChild(h4DueDate);
+				divOptions.appendChild(labelDueDate);
 				divOptions.appendChild(inputDueDate);
+				divOptions.appendChild(labelPriority);
 				divOptions.appendChild(inputPriority);
 				divTodo.appendChild(divOptions);
 				if(todosArr[i].getNotes().lenght > 0){
