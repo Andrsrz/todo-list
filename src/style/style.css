@@ -309,7 +309,26 @@ html, body {
 }
 
 .todo-container > .todo-due-date {
+	display: block;
+}
 
+.edit-todo > .todo-due-date {
+	display: none;
+}
+
+.todo-container > .todo-options-container {
+	display: none;
+}
+
+.edit-todo > .todo-options-container {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-content: center;
+}
+
+.todo-options-container {
+	margin: 10px;
 }
 
 #site-footer {

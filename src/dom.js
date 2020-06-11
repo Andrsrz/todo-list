@@ -218,6 +218,7 @@ const Dom = (() => {
 				/* This elements are for editing the todo item */
 				let inputTitle = document.createElement("input");
 				let inputDescription = document.createElement("textarea");
+				let divOptions = document.createElement("div");
 				let inputDueDate = document.createElement("input");
 				let inputPriority = document.createElement("select");
 				let inputNotes = document.createElement("textarea");
@@ -239,6 +240,7 @@ const Dom = (() => {
 				inputDescription.className = "todo-description-input " + todoTitle;
 				inputDescription.placeholder = "Description";
 				inputDescription.required = true;
+				divOptions.className = "todo-options-container " + todoTitle;
 				inputDueDate.className = "todo-due-date-input " + todoTitle;
 				inputDueDate.type = "date";
 				inputDueDate.required = true;
@@ -281,8 +283,9 @@ const Dom = (() => {
 				divTodo.appendChild(h4Description);
 				divTodo.appendChild(inputDescription);
 				divTodo.appendChild(h4DueDate);
-				divTodo.appendChild(inputDueDate);
-				divTodo.appendChild(inputPriority);
+				divOptions.appendChild(inputDueDate);
+				divOptions.appendChild(inputPriority);
+				divTodo.appendChild(divOptions);
 				if(todosArr[i].getNotes().lenght > 0){
 					let notes = document.createElement("span");
 					notes.className = "todo-notes " + todoTitle;
