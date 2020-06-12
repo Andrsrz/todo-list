@@ -1,35 +1,34 @@
-const Project = () => {
-	/* Default values */
-	var title = "Title";
-	var description = "Description";
-	var todos = [];
-
+class Project {
+	constructor(title, description, todos){
+		this.title = title ? title : "Title";
+		this.description = description ? description : "Description";
+		this.todos = todos ? todos : [];
+	}
 	/* Setters */
-	const setTitle = (newTitle) => title = newTitle;
-	const setDescription = (newDescription) => description = newDescription;
+	setTitle(newTitle){ this.title = newTitle; }
+	setDescription(newDescription){ this.description = newDescription; }
+	setTodos(todosArr){ this.todos = todosArr; }
 	/* Getters */
-	const getTitle = () => title;
-	const getDescription = () => description;
-	const getTodos = () => todos;
+	getTitle(){ return this.title; }
+	getDescription(){ return this.description; }
+	getTodos(){ return this.todos; }
 
-	const addTodo = (todo) => {
-		todos.push(todo);
+	addTodo(todo){
+		console.log(this.todos);
+		this.todos.push(todo);
 	}
 
-	const updateTodo = (index, title, description, dueDate, priority, notes) => {
-		todos[index].setTitle(title);
-		todos[index].setDescription(description);
-		todos[index].setDueDate(dueDate);
-		todos[index].setPriority(priority);
-		todos[index].setNotes(notes);
+	updateTodo(index, title, description, dueDate, priority, notes){
+		this.todos[index].setTitle(title);
+		this.todos[index].setDescription(description);
+		this.todos[index].setDueDate(dueDate);
+		this.todos[index].setPriority(priority);
+		this.todos[index].setNotes(notes);
 	}
 
-	const removeTodo = (index) => {
-		todos.splice(index, 1);
+	removeTodo(index){
+		this.todos.splice(index, 1);
 	}
-
-	return { setTitle, setDescription, getTitle, getDescription, getTodos,
-			 addTodo, updateTodo, removeTodo };
 };
 
 export { Project };

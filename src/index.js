@@ -9,11 +9,75 @@ import { Item } from './item.js';
 const Index = (() => {
 	var projects = [];
 
+	const storageAvailable = (type) => {
+		var storage;
+		try {
+			storage = window[type];
+			var x = '__storage_test__';
+			storage.setItem(x, x);
+			storage.removeItem(x);
+			return true;
+		}
+		catch(e) {
+			return e instanceof DOMException && (
+				// everything except Firefox
+				e.code === 22 ||
+				// Firefox
+				e.code === 1014 ||
+				// test name field too, because code might not be present
+				// everything except Firefox
+				e.name === 'QuotaExceededError' ||
+				// Firefox
+				e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+				// acknowledge QuotaExceededError only if there's something already stored
+				(storage && storage.length !== 0);
+		}
+	}
+
+	const saveToStorage = () => {
+		localStorage.setItem('projectsArr', JSON.stringify(projects, null, 4));
+		getFromStorage();
+	}
+
+	const getFromStorage = () => {
+		let storage = false;
+		// projects = [];
+
+		let projectsLocalStorage = localStorage.getItem('projectsArr');
+		console.log(projectsLocalStorage);
+		let projectsFromLocalStorage = JSON.parse(projectsLocalStorage);
+
+		// if(projectsFromLocalStorage != null){
+		// 	for(let i = 0; i < projectsFromLocalStorage.length; i++){
+		// 		console.log(projectsFromLocalStorage[i].title);
+		// 		console.log(projectsFromLocalStorage[i].description);
+		// 		console.log(projectsFromLocalStorage[i].todos);
+		// 		storage = true;
+		// 		/* Get attributes from the JSON */
+		// 		let project = Project();
+		// 		project.setTitle(projectsFromLocalStorage[i].title);
+		// 		project.setDescription(projectsFromLocalStorage[i].description);
+		// 		// project.setTodos(projects[i].todos);
+		// 		projects.push(project);
+		// 	}
+		// }
+
+		return storage;
+	}
+
+	const checkLocalStorage = () => {
+		if(storageAvailable('localStorage')){
+			getFromStorage();
+		}else {
+			alert("WARNING! Your browser doesn't support local storage. To use this app \
+				change the browser.");
+		}
+	}
+
 	const defaultProject = () => {
-		let defaultProject = Project();
-		defaultProject.setTitle("Default");
-		defaultProject.setDescription("Project Description");
+		let defaultProject = new Project("Default", "Project Description");
 		addProject(defaultProject);
+		// saveToStorage();
 	}
 
 	const addProject = (project) => {
@@ -24,8 +88,6 @@ const Index = (() => {
 		projects.splice(index, 1);
 	}
 
-	const getProjects = () => projects;
-
 	const generateNewProject = () => {
 		let project = Project();
 		addProject(project);
@@ -34,8 +96,9 @@ const Index = (() => {
 
 	const generateNewTodo = (index) => {
 		/* Create New Todo */
-		let todo = Item();
+		let todo = new Item();
 		todo.setProjectId(index);
+		console.log(todo);
 		projects[index].addTodo(todo);
 		Dom.renderTodosFromProject(index);
 	}
@@ -102,7 +165,7 @@ const Index = (() => {
 		Dom.renderProjects(projects);
 	}
 
-	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo,
+	return { render, projects, generateNewProject, getTodosFromProject, generateNewTodo,
 			 editProject, updateProject, deleteProject, editTodo, updateTodo, deleteTodo };
 })();
 export { Index };

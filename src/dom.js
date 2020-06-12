@@ -123,12 +123,12 @@ const Dom = (() => {
 			 * get a better UX filling the input with previous values. */
 			inputTitle.type = "text";
 			inputTitle.placeholder = "Title";
-			if(projectsArr[i].getTitle() != "Title"){
+			if(projectsArr[i].title != "Title"){
 				inputTitle.value = projectsArr[i].getTitle();
 			}
 			inputTitle.required = true;
 			inputDescription.placeholder = "Description";
-			if(projectsArr[i].getDescription() != "Description"){
+			if(projectsArr[i].description != "Description"){
 				inputDescription.value = projectsArr[i].getDescription();
 			}
 			inputDescription.required = true;
@@ -153,7 +153,7 @@ const Dom = (() => {
 
 			/* Click edit if the project is new */
 			if(projectsArr[i].getTitle() == "Title" &&
-			   projectsArr[i].getDescription() == "Description"){
+			   projectsArr[i].getDscription() == "Description"){
 				btnEdit.click();
 			}
 		}
@@ -212,7 +212,7 @@ const Dom = (() => {
 
 		if(index != null){
 			/* We use index to get the project from the projects array */
-			let project = Index.getProjects()[index];
+			let project = Index.projects[index];
 			let todosArr = project.getTodos();
 			renderTodosHeader(index);
 			for(let i = 0; i < todosArr.length; i++){
@@ -292,9 +292,9 @@ const Dom = (() => {
 				btnOk.title = "Done";
 				iconOk.className = "far fa-check-circle";
 				/* Add Text to the elements */
-				h2Title.innerHTML = todosArr[i].getTitle();
-				h4Description.innerHTML = todosArr[i].getDescription();
-				h4DueDate.innerHTML = todosArr[i].getDueDate();
+				h2Title.innerHTML = todosArr[i].title;
+				h4Description.innerHTML = todosArr[i].description;
+				h4DueDate.innerHTML = todosArr[i].dueDate;
 				/* This elements are for editing the todo item
 				 * Checking if the projects values are the default so we can
 				 * get a better UX filling the input with previous values. */
@@ -309,7 +309,7 @@ const Dom = (() => {
 				if(todosArr[i].getDueDate() != "Date"){
 					inputDueDate.value = todosArr[i].getDueDate();
 				}
-				if(todosArr[i].getNotes().length > 0){
+				if(todosArr[i].getNotes() != "No Notes"){
 					inputNotes.value = todosArr[i].getNotes();
 				}
 				/* Add them to the Parent */
@@ -343,14 +343,9 @@ const Dom = (() => {
 				}
 				divOptions.appendChild(inputPriority);
 				divTodo.appendChild(divOptions);
-				if(todosArr[i].getNotes().lenght > 0){
+				if(todosArr[i].getNotes() != "No Notes"){
 					let notes = document.createElement("span");
 					notes.className = "todo-notes " + todoTitle;
-					for(let j = 0; i < todosArr[i].getNotes().length; j++){
-						let note = document.createElement("p");
-						note.className = "todo-note " + todoTitle;
-						notes.appendChild(note);
-					}
 					divTodo.appendChild(notes);
 				}
 				divTodo.appendChild(inputNotes);
