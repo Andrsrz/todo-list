@@ -12,6 +12,10 @@ li {
 	margin: 0 5px 0 5px;
 }
 
+svg {
+	pointer-events: none;
+}
+
 html, body {
 	font-family: Helvetica, sans-serif, Arial;
 	width: 100%;
@@ -141,8 +145,8 @@ textarea {
 	display: block;
 }
 
-.project-title-container > .project-buttons-container {
-
+.project-title-container > .project-buttons-container > span {
+	margin: 5px 5px 0 5px;
 }
 
 .edit > .project-title-container > .project-buttons-container {
@@ -320,9 +324,9 @@ textarea {
 	display: block;
 }
 
-.todo-buttons-container > button {
+.todo-buttons-container > span {
 	cursor: pointer;
-	margin: 0 3px 5px 3px;
+	margin: 5px;
 }
 
 .todo-container > hr {

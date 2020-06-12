@@ -86,31 +86,38 @@ const Dom = (() => {
 			let spanTitleContainer = document.createElement("span");
 			let h2Title = document.createElement("h2");
 			let spanButtonsContainer = document.createElement("span");
-			let btnEdit = document.createElement("button");
-			let btnDelete = document.createElement("button");
+			let btnEdit = document.createElement("span");
+			let iconEdit = document.createElement("span");
+			let btnDelete = document.createElement("span");
+			let iconDelete = document.createElement("span");
 			let space = document.createElement("hr");
 			let h4Description = document.createElement("h4");
 			/* This elements are for editing the project */
 			let inputTitle = document.createElement("input");
 			let inputDescription = document.createElement("textarea");
-			let btnOk = document.createElement("button");
+			let btnOk = document.createElement("span");
+			let iconOk = document.createElement("span");
 			/* Set attributes. */
 			spanProject.className = "project-container " + projectTitle;
 			spanTitleContainer.className = "project-title-container " + projectTitle;
 			h2Title.className = "project-title " + projectTitle;
 			spanButtonsContainer.className = "project-buttons-container " + projectTitle;
 			btnEdit.className = "project-btn-edit " + projectTitle;
+			btnEdit.title = "Edit";
+			iconEdit.className = "fas fa-pencil-alt";
 			btnDelete.className = "project-btn-delete " + projectTitle;
+			btnDelete.title = "Delete";
+			iconDelete.className = "fas fa-trash";
 			h4Description.className = "project-description " + projectTitle;
 			/* This elemets are for editing the project */
 			inputTitle.className = "project-title-input " + projectTitle;
 			inputDescription.className = "project-description-input " + projectTitle;
 			btnOk.className = "project-btn-ok " + projectTitle;
+			btnOk.title = "Done";
+			iconOk.className = "far fa-check-circle";
 			/* Add Text to the elements */
 			h2Title.innerHTML = projectsArr[i].getTitle();
 			h4Description.innerHTML = projectsArr[i].getDescription();
-			btnDelete.innerHTML = "D";
-			btnEdit.innerHTML = "E";
 			/* This elements is for editing the project
 			 * Checking if the projects values are the default so we can
 			 * get a better UX filling the input with previous values. */
@@ -125,10 +132,12 @@ const Dom = (() => {
 				inputDescription.value = projectsArr[i].getDescription();
 			}
 			inputDescription.required = true;
-			btnOk.innerHTML = "OK";
 			/* Add the elements into the containers */
+			btnEdit.appendChild(iconEdit);
 			spanButtonsContainer.appendChild(btnEdit);
+			btnDelete.appendChild(iconDelete);
 			spanButtonsContainer.appendChild(btnDelete);
+			btnOk.appendChild(iconOk);
 			spanButtonsContainer.appendChild(btnOk); // For editing the project
 			spanTitleContainer.appendChild(h2Title);
 			spanTitleContainer.appendChild(inputTitle); // For editing the project
@@ -213,8 +222,10 @@ const Dom = (() => {
 				let spanTitleContainer = document.createElement("span");
 				let h2Title = document.createElement("h2");
 				let spanButtonsContainer = document.createElement("span");
-				let btnEdit = document.createElement("button");
-				let btnDelete = document.createElement("button");
+				let btnEdit = document.createElement("span");
+				let iconEdit = document.createElement("span");
+				let btnDelete = document.createElement("span");
+				let iconDelete = document.createElement("span");
 				let space = document.createElement("hr");
 				let h4Description = document.createElement("h4");
 				let h4DueDate = document.createElement("h4");
@@ -227,7 +238,8 @@ const Dom = (() => {
 				let labelPriority = document.createElement("label");
 				let inputPriority = document.createElement("select");
 				let inputNotes = document.createElement("textarea");
-				let btnOk = document.createElement("button");
+				let btnOk = document.createElement("span");
+				let iconOk = document.createElement("span");
 				/* Set attributes to elements */
 				divTodo.className = "todo-container " + todoTitle + " " + todosArr[i].getPriority();
 				/* Set div border color from priority */
@@ -247,7 +259,11 @@ const Dom = (() => {
 				h2Title.className = "todo-title " + todoTitle;
 				spanButtonsContainer.className = "todo-buttons-container " + todoTitle;
 				btnEdit.className = "todo-btn-edit " + todoTitle;
+				btnEdit.title = "Edit";
+				iconEdit.className = "fas fa-pencil-alt";
 				btnDelete.className = "todo-btn-delete " + todoTitle;
+				btnDelete.title = "Delete";
+				iconDelete.className = "fas fa-trash";
 				h4Description.className = "todo-description " + todoTitle;
 				h4DueDate.className = "todo-due-date " + todoTitle;
 				/* This elements are for editing the todo item */
@@ -273,18 +289,17 @@ const Dom = (() => {
 				inputNotes.className = "todo-notes-input " + todoTitle;
 				inputNotes.placeholder = "Notes";
 				btnOk.className = "todo-btn-ok " + todoTitle;
+				btnOk.title = "Done";
+				iconOk.className = "far fa-check-circle";
 				/* Add Text to the elements */
 				h2Title.innerHTML = todosArr[i].getTitle();
 				h4Description.innerHTML = todosArr[i].getDescription();
 				h4DueDate.innerHTML = todosArr[i].getDueDate();
-				btnDelete.innerHTML = "D";
-				btnEdit.innerHTML = "E";
 				/* This elements are for editing the todo item
 				 * Checking if the projects values are the default so we can
 				 * get a better UX filling the input with previous values. */
 				labelDueDate.innerHTML = "Due Date : ";
 				labelPriority.innerHTML = "Priority : ";
-				btnOk.innerHTML = "OK";
 				if(todosArr[i].getTitle() != "Title"){
 					inputTitle.value = todosArr[i].getTitle();
 				}
@@ -298,8 +313,11 @@ const Dom = (() => {
 					inputNotes.value = todosArr[i].getNotes();
 				}
 				/* Add them to the Parent */
+				btnEdit.appendChild(iconEdit);
 				spanButtonsContainer.appendChild(btnEdit);
+				btnDelete.appendChild(iconDelete);
 				spanButtonsContainer.appendChild(btnDelete);
+				btnOk.appendChild(iconOk);
 				spanButtonsContainer.appendChild(btnOk);
 				spanTitleContainer.appendChild(h2Title);
 				spanTitleContainer.appendChild(inputTitle);
