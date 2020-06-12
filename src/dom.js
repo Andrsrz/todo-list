@@ -331,11 +331,14 @@ const Dom = (() => {
 				divOptions.appendChild(inputDueDate);
 				divOptions.appendChild(labelPriority);
 				/* Populate Priorities */
-				for(let i = 0; i < todoPriorities.length; i++){
+				for(let j = 0; j < todoPriorities.length; j++){
 					let priorityItem = document.createElement("option");
 					priorityItem.className = "todo-priority-option " + todoTitle;
-					priorityItem.value = todoPriorities[i];
-					priorityItem.innerHTML = todoPriorities[i];
+					priorityItem.value = todoPriorities[j];
+					priorityItem.innerHTML = todoPriorities[j];
+					if(todoPriorities[j] == todosArr[i].getPriority()){
+						priorityItem.selected = "selected";
+					}
 					inputPriority.appendChild(priorityItem);
 				}
 				divOptions.appendChild(inputPriority);
