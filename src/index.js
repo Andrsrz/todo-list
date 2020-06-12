@@ -11,8 +11,8 @@ const Index = (() => {
 
 	const defaultProject = () => {
 		let defaultProject = Project();
-		defaultProject.setTitle("Project 1");
-		defaultProject.setDescription("Project Description 1");
+		defaultProject.setTitle("Default");
+		defaultProject.setDescription("Project Description");
 		addProject(defaultProject);
 	}
 
@@ -90,8 +90,10 @@ const Index = (() => {
 		Dom.renderTodosFromProject(projectId);
 	}
 
-	const deleteTodo = (elementClass) => {
-
+	const deleteTodo = (projectId, buttonClass) => {
+		let todoId = getProjectIndex(buttonClass);
+		projects[projectId].removeTodo(todoId);
+		Dom.renderTodosFromProject(projectId);
 	}
 
 	const render = () => {

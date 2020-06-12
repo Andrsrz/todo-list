@@ -183,7 +183,7 @@ const Dom = (() => {
 			Index.editTodo(e.target.parentNode.parentNode.parentNode);
 		}, false);
 		del.addEventListener("click", function (e) {
-			Index.deleteTodo(e.target.className);
+			Index.deleteTodo(projectId, e.target.className);
 		}, false);
 		ok.addEventListener("click", function (e) {
 			// Enable add buttons
