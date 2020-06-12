@@ -9,6 +9,13 @@ import { Item } from './item.js';
 const Index = (() => {
 	var projects = [];
 
+	const defaultProject = () => {
+		let defaultProject = Project();
+		defaultProject.setTitle("Project 1");
+		defaultProject.setDescription("Project Description 1");
+		addProject(defaultProject);
+	}
+
 	const addProject = (project) => {
 		projects.push(project);
 	}
@@ -88,7 +95,9 @@ const Index = (() => {
 	}
 
 	const render = () => {
+		defaultProject();
 		Dom.init();
+		Dom.renderProjects(projects);
 	}
 
 	return { render, getProjects, generateNewProject, getTodosFromProject, generateNewTodo,
