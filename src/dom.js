@@ -13,6 +13,7 @@ const Dom = (() => {
 	const footer = document.createElement("footer");
 	const todoPriorities = ["High", "Neutral", "Low"];
 	const githubpage = "https://github.com/Andrsrz/todo-list";
+	const reportbugpage = "https://github.com/Andrsrz/todo-list/issues/new";
 
 	const populatePage = () => {
 		projects.appendChild(projectsHeader);
@@ -366,22 +367,32 @@ const Dom = (() => {
 		}
 	}
 
-	const setFooterIconOnClickEvent = (goToCode) => {
+	const setFooterIconOnClickEvent = (goToCode, goToReportBug) => {
 		goToCode.addEventListener("click", function () {
 			window.open(githubpage, '_blank');
+		}, false);
+		goToReportBug.addEventListener("click", function () {
+			window.open(reportbugpage, '_blank');
 		}, false);
 	}
 
 	const renderFooter = () => {
 		let footerLinks = document.createElement("ul");
 		let linkToCode = document.createElement("li");
+		let linkToCodeIcon = document.createElement("span");
+		let linkToReportBug = document.createElement("li");
+		let linkToReportBugIcon = document.createElement("span");
 		linkToCode.title = "Show me the code";
 		linkToCode.className = "code-icon";
-		let linkToCodeIcon = document.createElement("span");
 		linkToCodeIcon.className = "fas fa-code";
-		setFooterIconOnClickEvent(linkToCode);
+		linkToReportBug.title = "OMG! I found a bug!";
+		linkToReportBug.className = "bug-icon";
+		linkToReportBugIcon.className = "fas fa-bug";
+		setFooterIconOnClickEvent(linkToCode, linkToReportBug);
 		linkToCode.appendChild(linkToCodeIcon);
+		linkToReportBug.appendChild(linkToReportBugIcon);
 		footerLinks.appendChild(linkToCode);
+		footerLinks.appendChild(linkToReportBug);
 		footer.appendChild(footerLinks);
 	}
 

@@ -7,6 +7,11 @@ ul li {
 	list-style: none;
 }
 
+li {
+	display: inline-block;
+	margin: 0 5px 0 5px;
+}
+
 html, body {
 	font-family: Helvetica, sans-serif, Arial;
 	width: 100%;
@@ -407,6 +412,14 @@ textarea {
 }
 
 #site-footer .code-icon:hover {
+	cursor: pointer;
+}
+
+#site-footer .bug-icon {
+	color: #55B4B0;
+}
+
+#site-footer .bug-icon:hover {
 	cursor: pointer;
 }
 
