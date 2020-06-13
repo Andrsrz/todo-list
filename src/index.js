@@ -44,9 +44,7 @@ const Index = (() => {
 
 	const clearProjects = () => {
 		for(let i = Index.projects.length; i > 0; i--){
-			console.log(Index.projects.length);
 			Index.projects.pop();
-			console.log(Index.projects.length);
 		}
 	}
 
@@ -121,12 +119,14 @@ const Index = (() => {
 	const updateTodo = (projectId, buttonClass, title, description, dueDate, priority, notes) => {
 		let todoId = getProjectIndex(buttonClass);
 		projects[projectId].updateTodo(todoId, title, description, dueDate, priority, notes);
+		saveToStorage();
 		Dom.renderTodosFromProject(projectId);
 	}
 
 	const deleteTodo = (projectId, buttonClass) => {
 		let todoId = getProjectIndex(buttonClass);
 		projects[projectId].removeTodo(todoId);
+		saveToStorage();
 		Dom.renderTodosFromProject(projectId);
 	}
 

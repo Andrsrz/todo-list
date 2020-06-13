@@ -20,11 +20,11 @@ class Project {
 	}
 
 	updateTodo(index, title, description, dueDate, priority, notes){
-		this.todos[index].setTitle(title);
-		this.todos[index].setDescription(description);
-		this.todos[index].setDueDate(dueDate);
-		this.todos[index].setPriority(priority);
-		this.todos[index].setNotes(notes);
+		this.todos[index].title = title;
+		this.todos[index].description = description;
+		this.todos[index].dueDate = dueDate;
+		this.todos[index].priority = priority;
+		this.todos[index].notes = notes;
 	}
 
 	removeTodo(index){

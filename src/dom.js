@@ -216,7 +216,7 @@ const Dom = (() => {
 			let todosArr = project.getTodos();
 			renderTodosHeader(index);
 			for(let i = 0; i < todosArr.length; i++){
-				let todoTitle = todosArr[i].getTitle() + i;
+				let todoTitle = todosArr[i].title + i;
 				/* Create elements */
 				let divTodo = document.createElement("div");
 				let spanTitleContainer = document.createElement("span");
@@ -241,9 +241,9 @@ const Dom = (() => {
 				let btnOk = document.createElement("span");
 				let iconOk = document.createElement("span");
 				/* Set attributes to elements */
-				divTodo.className = "todo-container " + todoTitle + " " + todosArr[i].getPriority();
+				divTodo.className = "todo-container " + todoTitle + " " + todosArr[i].priority;
 				/* Set div border color from priority */
-				let todoPriority = todosArr[i].getPriority();
+				let todoPriority = todosArr[i].priority;
 				switch(todoPriority){
 					case 'High':
 						divTodo.className += " high";
@@ -300,17 +300,17 @@ const Dom = (() => {
 				 * get a better UX filling the input with previous values. */
 				labelDueDate.innerHTML = "Due Date : ";
 				labelPriority.innerHTML = "Priority : ";
-				if(todosArr[i].getTitle() != "Title"){
-					inputTitle.value = todosArr[i].getTitle();
+				if(todosArr[i].title != "Title"){
+					inputTitle.value = todosArr[i].title;
 				}
-				if(todosArr[i].getDescription() != "Description"){
-					inputDescription.value = todosArr[i].getDescription();
+				if(todosArr[i].description != "Description"){
+					inputDescription.value = todosArr[i].description;
 				}
-				if(todosArr[i].getDueDate() != "Date"){
-					inputDueDate.value = todosArr[i].getDueDate();
+				if(todosArr[i].dueDate != "Date"){
+					inputDueDate.value = todosArr[i].dueDate;
 				}
-				if(todosArr[i].getNotes() != "No Notes"){
-					inputNotes.value = todosArr[i].getNotes();
+				if(todosArr[i].notes != "No Notes"){
+					inputNotes.value = todosArr[i].notes;
 				}
 				/* Add them to the Parent */
 				btnEdit.appendChild(iconEdit);
@@ -336,14 +336,14 @@ const Dom = (() => {
 					priorityItem.className = "todo-priority-option " + todoTitle;
 					priorityItem.value = todoPriorities[j];
 					priorityItem.innerHTML = todoPriorities[j];
-					if(todoPriorities[j] == todosArr[i].getPriority()){
+					if(todoPriorities[j] == todosArr[i].priority){
 						priorityItem.selected = "selected";
 					}
 					inputPriority.appendChild(priorityItem);
 				}
 				divOptions.appendChild(inputPriority);
 				divTodo.appendChild(divOptions);
-				if(todosArr[i].getNotes() != "No Notes"){
+				if(todosArr[i].notes != "No Notes"){
 					let notes = document.createElement("span");
 					notes.className = "todo-notes " + todoTitle;
 					divTodo.appendChild(notes);
@@ -355,9 +355,9 @@ const Dom = (() => {
 				itemsBody.appendChild(divTodo);
 
 				/* Click edit if the project is new */
-				if(todosArr[i].getTitle() == "Title" &&
-				   todosArr[i].getDescription() == "Description" &&
-				   todosArr[i].getDueDate() == "Date"){
+				if(todosArr[i].title == "Title" &&
+				   todosArr[i].description == "Description" &&
+				   todosArr[i].dueDate == "Date"){
 					btnEdit.click();
 				}
 			}
