@@ -7,14 +7,15 @@ class Project {
 	/* Setters */
 	setTitle(newTitle){ this.title = newTitle; }
 	setDescription(newDescription){ this.description = newDescription; }
-	setTodos(todosArr){ this.todos = todosArr; }
+	setTodos(todosArr){
+		this.todos = todosArr.slice();
+	}
 	/* Getters */
 	getTitle(){ return this.title; }
 	getDescription(){ return this.description; }
 	getTodos(){ return this.todos; }
 
 	addTodo(todo){
-		console.log(this.todos);
 		this.todos.push(todo);
 	}
 

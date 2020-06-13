@@ -153,7 +153,7 @@ const Dom = (() => {
 
 			/* Click edit if the project is new */
 			if(projectsArr[i].getTitle() == "Title" &&
-			   projectsArr[i].getDscription() == "Description"){
+			   projectsArr[i].getDescription() == "Description"){
 				btnEdit.click();
 			}
 		}
